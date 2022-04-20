@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Stores from './Stores';
+import StoreItems from './StoreItems';
+import ItemInfo from './ItemInfo';
+import NewItem from './CreateNewItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+        <Routes>
+            <Route path="/stores" element={<Stores />}>
+                <Route path=":store_id" element={<StoreItems />}>
+                    <Route path="items/new" element={<ItemInfo />} />
+                    <Route path="items/:item_id" element={<NewItem />} />
+                </Route>
+            </Route>
+        </Routes>
+    </Router>
+);
 }
+
+//daggerelf23
 
 export default App;
