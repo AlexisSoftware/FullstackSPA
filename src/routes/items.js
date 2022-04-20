@@ -27,39 +27,6 @@ router.post('/', async (req, res) => {
     res.json(newItem)
 })
 
-//PUT /items/:item_id
-router.put('/:item_id', getItem, async (req, res) => {
-    res.item.Name = req.body.Name
-    res.item.Quantity = req.body.Quantity
-    res.item.Price = req.body.Price
-    res.item.StoreID = req.body.StoreID
-    const updatedItem = await res.item.save()
-    res.json(updatedItem)
-})
-
-//DELETE /items/:item_id
-router.delete('/:item_id', getItem, (req, res) => {
-    res.item.remove()
-})
-
-//PATCH /items/:item_id
-router.patch('/:item_id', getItem, async (req, res) => {
-    if (req.body.Name != null) {
-        res.item.Name = req.body.Name
-    }
-    if (req.body.Quantity != null) {
-        res.item.Quantity = req.body.Quantity
-    }
-    if (req.body.Price != null) {
-        res.item.Price = req.body.Price
-    }
-    if (req.body.StoreID != null) {
-        res.item.StoreID = req.body.StoreID
-    }
-    const updatedItem = await res.item.save()
-    res.json(updatedItem)
-})
-
 async function getItem(req, res, next) {
     let item
     item = await Item.findById(req.params.id)

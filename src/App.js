@@ -21,6 +21,4 @@ function App() {
 );
 }
 
-//daggerelf23
-
 export default App;
