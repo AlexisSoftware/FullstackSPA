@@ -1,0 +1,1 @@
+//displays a listing of all the stores
